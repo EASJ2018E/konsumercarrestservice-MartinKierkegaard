@@ -5,6 +5,7 @@ import axios, {
 //http://rest-pele-easj-dk.azurewebsites.net/api/Cars
 
 interface ICar {
+    id: number;
     model:string;
     vendor:string;
     price:number;
@@ -17,12 +18,12 @@ buttonelement.addEventListener('click',showAllCars);
 let buttonAdd : HTMLButtonElement = <HTMLButtonElement> document.getElementById("addButton");
 buttonAdd.addEventListener('click',addCar);
 
-let buttonDelete:HTMLButtonElement = <HTMLButtonElement> document.getElementById("deleteButton");
-buttonDelete.addEventListener('click',deleteCar);
+// let buttonDelete:HTMLButtonElement = <HTMLButtonElement> document.getElementById("deleteButton");
+// buttonDelete.addEventListener('click',deleteCar);
+
+let uri :string = "https://webapicar20190326034339.azurewebsites.net/api/cars";
 
 function showAllCars():void {
-
-    let uri :string = "http://rest-pele-easj-dk.azurewebsites.net/api/Cars";
 
     axios.get<ICar[]>(uri)
     .then(function (response:AxiosResponse<ICar[]>):void{
@@ -35,7 +36,7 @@ function showAllCars():void {
               }
             else
               {
-                result += "<li> <b>model</b>: "+ car.model + " <i>vendor</i> :" + car.vendor +" pris:" +car.price.toString() +"</li>"        
+                result += "<li> "+car.id +"<b> model</b>: "+ car.model + " <i>vendor</i> :" + car.vendor +" pris:" +car.price.toString() +"</li>"        
 
               }
             });
@@ -56,12 +57,11 @@ function showAllCars():void {
 
 function addCar():void{
  
-    let uri :string = "http://rest-pele-easj-dk.azurewebsites.net/api/Cars";
-
-    let addModelelement: HTMLInputElement = <HTMLInputElement>document.getElementById("AddModel");
-    let addVendorElement: HTMLInputElement = <HTMLInputElement>document.getElementById("AddVendor");
-    let addPriceElement: HTMLInputElement = <HTMLInputElement>document.getElementById("AddPrice");
+    let addModelelement: HTMLInputElement = <HTMLInputElement>document.getElementById("addModel");
+    let addVendorElement: HTMLInputElement = <HTMLInputElement>document.getElementById("addVendor");
+    let addPriceElement: HTMLInputElement = <HTMLInputElement>document.getElementById("addPrice");
     
+    let myId: number = 0;
     let myModel: string = addModelelement.value;
     let myVendor:string = addVendorElement.value;
     let myPrice : number = +addPriceElement.value;
