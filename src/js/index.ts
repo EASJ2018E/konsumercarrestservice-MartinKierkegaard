@@ -2,7 +2,7 @@ import axios, {
     AxiosResponse,
     AxiosError} from "../../node_modules/axios/index";
 
-import { ICar } from "./Icar";
+    import { ICar } from "./Icar";
 
 
 
@@ -23,22 +23,23 @@ function showAllCars():void {
     axios.get<ICar[]>(uri)
     .then(function (response:AxiosResponse<ICar[]>):void{
 
-        let result : string = "<ol>";
-        response.data.forEach((car : ICar) => {
-            if(car == null)
-              {
-                result += "<li> NULL element</li>"        
-              }
-            else
-              {
-                result += "<li> "+car.id +"<b> model</b>: "+ car.model + " <i>vendor</i> :" + car.vendor +" pris:" +car.price.toString() +"</li>"        
+      console.log(response);
+        // let result : string = "<ol>";
+        // response.data.forEach((car : ICar) => {
+        //     if(car == null)
+        //       {
+        //         result += "<li> NULL element</li>"        
+        //       }
+        //     else
+        //       {
+        //         result += "<li> "+car.id +"<b> model</b>: "+ car.model + " <i>vendor</i> :" + car.vendor +" pris:" +car.price.toString() +"</li>"        
 
-              }
-            });
+        //       }
+        //     });
 
-        result += "</ol>";
+        // result += "</ol>";
 
-        divElement.innerHTML = result;
+        // divElement.innerHTML = result;
 
     }
     )
@@ -47,7 +48,7 @@ function showAllCars():void {
     })
     
 
-
+console.log("I slutningen af programmet");
 }
 
 function addCar():void{
