@@ -2,12 +2,9 @@ import axios, {
     AxiosResponse,
     AxiosError} from "../../node_modules/axios/index";
 
-interface ICar {
-    id: number;
-    model:string;
-    vendor:string;
-    price:number;
-}
+import { ICar } from "./Icar";
+
+
 
 let divElement : HTMLDivElement = <HTMLDivElement> document.getElementById("content");
 let buttonelement:HTMLButtonElement = <HTMLButtonElement> document.getElementById("getAllButton");  
